@@ -10,6 +10,9 @@
 template <typename T>
 using Map = typename std::vector<std::vector<T>>;
 
+const int WHITE = 0;
+const int BLACK = 1;
+
 class TerminalHeatmap
 {
 public:
@@ -48,6 +51,8 @@ public:
   void redraw();
 private:
   void initScreen();
+  void saveColorSpace();
+  void restoreColorSpace();
 
   Map<Temperature> map_;
   std::vector<Map<bool>> overlays_;
