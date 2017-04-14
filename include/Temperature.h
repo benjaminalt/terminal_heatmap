@@ -18,6 +18,6 @@ private:
   unsigned int value_;
   static const unsigned int maxValue_ = 4 * 255;
   static const unsigned int minValue_ = 0;
-}
+};
 
 #endif

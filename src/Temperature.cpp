@@ -40,6 +40,6 @@ Color Temperature::color()
   }
   else
   {
-    throw std::runtime_exception("Temperature internal value out of range: " + std::to_string(value_));
+    throw std::range_error("Temperature internal value out of range: " + std::to_string(value_));
   }
 }

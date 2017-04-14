@@ -4,14 +4,14 @@
 
 TerminalHeatmap::TerminalHeatmap(int height, int width)
 {
-  map_ = std::vector<std::vector<Color>>(height, std::vector<Color>(width, Color::fromPercent(0)));
+  map_ = std::vector<std::vector<Color>>(height, std::vector<Color>(width, Color(0,0,0)));
 }
 
 TerminalHeatmap::TerminalHeatmap(const Map<Temperature>& map)
 {
   for (int i = 0; i < map.size(); i++)
   {
-    std::vector<Color> row = map[i];
+    std::vector<Temperature> row = map[i];
     map_.push_back(std::vector<Color>());
     for (Temperature cell : row)
     {
@@ -22,7 +22,7 @@ TerminalHeatmap::TerminalHeatmap(const Map<Temperature>& map)
 
 void TerminalHeatmap::setTemperature(unsigned int row, unsigned int col, Temperature temperature)
 {
-  if (map.size() == 0)
+  if (map_.size() == 0)
   {
     throw std::runtime_error("Cannot set temperature: Map empty");
   }
@@ -30,14 +30,14 @@ void TerminalHeatmap::setTemperature(unsigned int row, unsigned int col, Tempera
   {
     throw std::range_error("Row out of range");
   }
-  if (col < 0 || col >= map[0].size())
+  if (col < 0 || col >= map_[0].size())
   {
     throw std::range_error("Column out of range");
   }
   map_[row][col] = temperature.color();
 }
 
-void TerminalHeatmap::addOverlay(const ColorMap& overlay)
+void TerminalHeatmap::addOverlay(const Map<Color>& overlay)
 {
   overlays_.push_back(overlay);
 }
