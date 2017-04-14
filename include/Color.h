@@ -7,12 +7,12 @@
 class Color
 {
 public:
-  Color(uint8_t red, uint8_t green, uint8_t blue);
-  std::tuple<uint8_t, uint8_t, uint8_t> rgb();
+  Color(short red, short green, short blue);
+  std::tuple<short, short, short> rgb();
 private:
-  uint8_t red_;
-  uint8_t green_;
-  uint8_t blue_;
+  short red_;
+  short green_;
+  short blue_;
 };
 
 #endif

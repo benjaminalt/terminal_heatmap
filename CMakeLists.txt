@@ -1,6 +1,14 @@
 cmake_minimum_required (VERSION 2.8.11)
 project (terminal_heatmap)
 
-include_directories(include)
+set(CURSES_NEED_NCURSES TRUE)
+find_package(Curses REQUIRED)
+
+include_directories(
+  include
+  ${Curses_INCLUDE_DIR}
+)
+
 add_executable(test_heatmap src/TerminalHeatmap.cpp src/Color.cpp src/Temperature.cpp)
 target_compile_features(test_heatmap PRIVATE cxx_range_for)
+target_link_libraries(test_heatmap ncurses)

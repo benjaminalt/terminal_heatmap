@@ -1,13 +1,13 @@
 #include "Color.h"
 
-Color::Color(uint8_t red, uint8_t green, uint8_t blue)
+Color::Color(short red, short green, short blue)
 {
   red_ = red;
   green_ = green;
   blue_ = blue;
 }
 
-std::tuple<uint8_t, uint8_t, uint8_t> Color::rgb()
+std::tuple<short, short, short> Color::rgb()
 {
-  return std::tuple<uint8_t, uint8_t, uint8_t>(red_, green_, blue_);
+  return std::tuple<short, short, short>(red_, green_, blue_);
 }
