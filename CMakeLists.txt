@@ -9,6 +9,10 @@ include_directories(
   ${Curses_INCLUDE_DIR}
 )
 
-add_executable(test_heatmap src/TerminalHeatmap.cpp src/Color.cpp src/Temperature.cpp)
+add_library(terminal_heatmap src/TerminalHeatmap.cpp src/Temperature.cpp src/Color.cpp)
+target_compile_features(terminal_heatmap PRIVATE cxx_range_for)
+target_link_libraries(terminal_heatmap ncurses)
+
+add_executable(test_heatmap src/TestTerminalHeatmap.cpp)
 target_compile_features(test_heatmap PRIVATE cxx_range_for)
-target_link_libraries(test_heatmap ncurses)
+target_link_libraries(test_heatmap terminal_heatmap)
